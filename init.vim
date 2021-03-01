@@ -1,10 +1,11 @@
 call plug#begin("~/.vim/plugged")
   " Theme
+	Plug 'gruvbox-community/gruvbox'
 	" Plug 'dracula/vim'
 	" Plug 'kyoz/purify', { 'rtp': 'vim' }
-	Plug 'mhartington/oceanic-next'
+	" Plug 'mhartington/oceanic-next'
 	"recommended when using oceanic
-	Plug 'herringtondarkholme/yats.vim'
+	" Plug 'herringtondarkholme/yats.vim'
   " TypeScript Highlighting
 	Plug 'leafgarland/typescript-vim'
 	" Plug 'peitalin/vim-jsx-typescript'
@@ -39,32 +40,23 @@ call plug#begin("~/.vim/plugged")
 	" angular syntax testing
 	Plug 'curist/vim-angular-template'
 	Plug 'digitaltoad/vim-pug'
+
+	" better syntax and loading times
+	Plug 'sheerun/vim-polyglot'
 	call plug#end()
   let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-eslint', 'coc-angular']
+	let mapleader=" "
 
 	let g:pear_tree_repeatable_expand=0
 
-" Enable theming support
-"if (has("termguicolors"))
-" set termguicolors
-"endif
+	set termguicolors
 
-"TODO fix enter map so it doesn't select the autocomplete suggestion
-" font
-set guifont=Monaco:h30
-" Theme
-"
-" Theme
  syntax enable
-" for vim 7
- set t_Co=256
+ let g:gruvbox_contrast_dark='hard'
+ let g:gruvbox_invert_selections='0'
+ colorscheme gruvbox
 
-" for vim 8
- if (has("termguicolors"))
-  set termguicolors
- endif
-
-colorscheme OceanicNext
+" colorscheme OceanicNext
 " Theme
 " filetype plugin on
 " syntax enable
@@ -73,8 +65,8 @@ colorscheme OceanicNext
 " colorscheme purify
 " colorscheme cosmic-barf
 " let g:colors_name = 'cosmic-barf'
-let mapleader=" "
 
+" Nerdtree
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeIgnore = []
@@ -98,6 +90,7 @@ let g:fzf_action = {
 "let FZF_DEFAULT_COMMAND = 'ag -g ""'
 let FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 let FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+" end nerdtree
 
 " open new split panes to right and below
 set splitright
