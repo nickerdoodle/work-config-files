@@ -9,20 +9,11 @@ let g:fzf_action = {
 "let FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 " let FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-let FZF_DEFAULT_COMMAND = 'rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor,coverage}/*"'
+let $FZF_DEFAULT_COMMAND = 'rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor,coverage}/*"'
 command! -bang -nargs=? -complete=dir Files
      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-let FZF_DEFAULT_OPTS='--ansi --preview-window --height 40% --layout=reverse --border'
-" let FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-" let FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4"
-" end nerdtree
-
-" Get text in files with Rg
-" command! -bang -nargs=* Rg
-"   \ call fzf#vim#grep(
-"   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-"   \   fzf#vim#with_preview(), <bang>0)
-
+" let $FZF_DEFAULT_OPTS='--ansi --height 40% --border --preview "bat --style=numbers --color=always --line-range :500 {}"'
+let $FZF_DEFAULT_OPTS='--ansi --height 40% --border --preview "cat {}"'
 
 "searching for term in files
 nnoremap <silent> <Leader>f :Rg<CR>
@@ -31,5 +22,27 @@ nnoremap <silent> <Leader>f :Rg<CR>
 "set grepprg=rg\ --vimgrep\ --smart-case\ --hidden
 			"\ --follow
 "--color=always\ --column\ --line-number
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+" command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+" command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case --".shellescape(<q-args>), 1, {'options': '--preview'}, <bang>0)
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+"colors
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 

@@ -26,7 +26,8 @@ call plug#begin("~/.vim/plugged")
   Plug 'ryanoasis/vim-devicons'
 
   " File Search
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	" Plug 'junegunn/fzf.vim', { 'commit': '23dda8602f138a9d75dd03803a79733ee783e356'}
 	Plug 'junegunn/fzf.vim'
 	Plug 'epmatsw/ag.vim'
