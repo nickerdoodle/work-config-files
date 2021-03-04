@@ -1,6 +1,7 @@
 call plug#begin("~/.vim/plugged")
   " Theme
 	Plug 'gruvbox-community/gruvbox'
+	Plug 'tomasiser/vim-code-dark'
 	" Plug 'dracula/vim'
 	" Plug 'kyoz/purify', { 'rtp': 'vim' }
 	" Plug 'mhartington/oceanic-next'
@@ -25,8 +26,9 @@ call plug#begin("~/.vim/plugged")
   Plug 'ryanoasis/vim-devicons'
 
   " File Search
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+	" Plug 'junegunn/fzf.vim', { 'commit': '23dda8602f138a9d75dd03803a79733ee783e356'}
+	Plug 'junegunn/fzf.vim'
 	Plug 'epmatsw/ag.vim'
 
 	" Commenting

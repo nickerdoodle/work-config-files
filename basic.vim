@@ -7,18 +7,37 @@ syntax on
 set splitright
 set splitbelow
 
+set mouse=a
+augroup centerOnInsert
+	autocmd!
+	autocmd InsertEnter * normal zz
+augroup END
+
+" lets you tab when through options and show list
+" when on the : commands
+set wildmode=longest,list,full
 " keeps indent sections highlighted
 vnoremap > >gv
 vnoremap < <gv
 
+
 " turn terminal to normal mode with escape
 tnoremap <Esc> <C-\><C-n>
+"split resizing
+nnoremap <Left> :vertical resize +2<CR>
+nnoremap <Right> :vertical resize -2<CR>
+nnoremap <Down> :resize +2<CR>
+nnoremap <Up> :resize -2<CR>
 
-" use alt+hjkl to move between split/vsplit panels
-tnoremap <leader>h <C-\><C-n><C-w>h
-tnoremap <leader>j <C-\><C-n><C-w>j
-tnoremap <leader>k <C-\><C-n><C-w>k
-tnoremap <leader>l <C-\><C-n><C-w>l
+" use leader +hjkl to move between split/vsplit panels
+" tnoremap <leader>h <C-\><C-n><C-w>h
+" tnoremap <leader>j <C-\><C-n><C-w>j
+" tnoremap <leader>k <C-\><C-n><C-w>k
+" tnoremap <leader>l <C-\><C-n><C-w>l
+tnoremap <leader>h <SPACE>h
+tnoremap <leader>j <SPACE>j
+tnoremap <leader>k <SPACE>k
+tnoremap <leader>l <SPACE>l
 nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
