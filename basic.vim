@@ -1,5 +1,11 @@
 let mapleader=" "
 inoremap jj <Esc>
+" nnoremap <C-c <Esc>
+nnoremap <C-j> 5j
+nnoremap <C-k> 5k
+nnoremap H ^
+nnoremap L g_
+
 set termguicolors
 syntax on
 " syntax enable
@@ -100,6 +106,7 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " switching tabs
 "
+nnoremap <silent> <C-t> :tabe %<CR>
 nnoremap <silent> <Leader>t :tabn<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 

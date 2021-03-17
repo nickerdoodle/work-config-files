@@ -1,4 +1,14 @@
 call plug#begin("~/.vim/plugged")
+
+	if exists('g:vscode')
+		" VS Code extension
+	Plug 'haya14busa/vim-easymotion'
+	Plug 'roxma/nvim-completion-manager'
+	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
+	Plug 'tpope/vim-surround'
+	else
+
   " Theme
 	Plug 'gruvbox-community/gruvbox'
 	Plug 'tomasiser/vim-code-dark'
@@ -27,8 +37,6 @@ call plug#begin("~/.vim/plugged")
 
   " File Search
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-	" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-	" Plug 'junegunn/fzf.vim', { 'commit': '23dda8602f138a9d75dd03803a79733ee783e356'}
 	Plug 'junegunn/fzf.vim'
 	Plug 'epmatsw/ag.vim'
 
@@ -46,8 +54,17 @@ call plug#begin("~/.vim/plugged")
 
 	" better syntax and loading times
 	Plug 'sheerun/vim-polyglot'
+
+	endif
+
 	call plug#end()
+
 	source $HOME/.config/nvim/basic.vim
+
+	if exists('g:vscode')
+		" VS Code extension
+	else
+
 	source $HOME/.config/nvim/coc.vim
 	source $HOME/.config/nvim/colorscheme.vim
 	source $HOME/.config/nvim/nerdtree.vim
@@ -55,3 +72,5 @@ call plug#begin("~/.vim/plugged")
 	source $HOME/.config/nvim/airline.vim
 	source $HOME/.config/nvim/auto-pairing.vim
 	source $HOME/.config/nvim/syntax.vim
+
+	endif
